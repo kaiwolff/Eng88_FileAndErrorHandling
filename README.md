@@ -47,3 +47,47 @@ The try portion will only work if there is a file with the given name in the dir
 |'t' |This is the default mode. It opens in text mode.|
 |'b' |This opens in binary mode.
 |'+' |This will open a file for reading and writing (updating)|
+
+
+
+In practice, this is used in the following tow functions, which read and write to a file:
+```python
+def open_using_with_and_print(file):
+
+    try:
+        with open("order.txt", "r") as file:
+            for line in file.readlines():
+                print(line.rstrip('\n'))
+
+    except FileNotFoundError as errmsg:
+        print(f"{file} not found\n" + str(errmsg))
+
+    finally:
+        print("Thank you for visiting, hope to see you again!")
+        #This will run, regardless of whether the other blocks run.
+
+
+#Mini-Task: Create a function called open_with_to_write_to_file to write/add/append
+#display the data with the added items - item names - Pizza, Cake, Avocado, Biryani, Pasta
+
+def open_with_to_write_to_file(file, item_list):
+    try:
+        with open("order.txt", "a") as file:
+            for item in item_list:
+                file.write(f"\n{item}")
+
+    except FileNotFoundError as errmsg:
+        print(f"{file} not found\n" + str(errmsg))
+
+    finally:
+        print("Thank you for adding to the order, hope to see you again!")
+        #This will run, regardless of whether the other blocks run.
+```
+
+I have set htis up to take a list of items to add, and a filename. The list and function call is below:
+
+```python
+order_list = ["Pizza", "Cake", "Avocado", "Biryani", "Pasta"]
+
+open_with_to_write_to_file("order.txt", order_list)
+```
