@@ -91,3 +91,25 @@ order_list = ["Pizza", "Cake", "Avocado", "Biryani", "Pasta"]
 
 open_with_to_write_to_file("order.txt", order_list)
 ```
+
+#### Re-Working
+
+To avoid repeatedly typing the same link, I updated the function to read the file into a variable, then checking if the designated input from our list is inside the file. The appending only occurs if the requested addition is not in ```file_contents```
+
+
+```python
+
+def open_with_to_write_to_file(file, item_list):
+    try:
+        with open("order.txt", "r+") as file:
+            file_content = file.read()
+            for item in item_list:
+
+                if item in file_content:
+                    print(f"{item} is already in order")
+                else:
+                    file.write(f"\n{item}")
+                    print(item)
+```
+
+the except and finally blocks remain unchanged. There must be a more efficient way of checking if the file contains a string, and I intend to do some research on this before possibly rewritign the function to include this method.
