@@ -112,4 +112,4 @@ def open_with_to_write_to_file(file, item_list):
                     print(item)
 ```
 
-the except and finally blocks remain unchanged. There must be a more efficient way of checking if the file contains a string, and I intend to do some research on this before possibly rewritign the function to include this method.
+the except and finally blocks remain unchanged. There must be a more efficient way of checking if the file contains a string, and I intend to do some research on this before possibly rewriting the function to include this method.
